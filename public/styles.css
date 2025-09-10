@@ -1,0 +1,67 @@
+:root {
+  --bg: #0b1020;
+  --fg: #e7ecff;
+  --glass: rgba(255,255,255,0.06);
+  --blur: 16px;
+}
+
+body {
+  margin: 0;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  background: radial-gradient(1200px 800px at 10% 10%, #0a1a4d, transparent 60%),
+              radial-gradient(1000px 600px at 90% 10%, #280a4d, transparent 60%),
+              radial-gradient(1200px 700px at 50% 120%, #092f4d, transparent 60%),
+              var(--bg);
+  color: var(--fg);
+}
+
+/* Navbar */
+.navbar-blur {
+  background: rgba(8,10,20,0.55);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Aurora */
+.aurora::before, .aurora::after {
+  content: "";
+  position: fixed;
+  inset: -20%;
+  background: conic-gradient(from 180deg, #4dffa8, #5bc0ff, #b68cff, #ff8cc9, #4dffa8);
+  filter: blur(120px) saturate(120%);
+  opacity: 0.08;
+  animation: swirl 30s linear infinite;
+  pointer-events: none;
+}
+.aurora::after { animation-duration: 52s; opacity: 0.06; }
+@keyframes swirl { from { transform: rotate(0deg) } to { transform: rotate(360deg) } }
+
+.card.glass, .modal-content.glass {
+  background: var(--glass);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  backdrop-filter: blur(var(--blur));
+}
+.shadow-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 40px rgba(0,0,0,0.35) }
+
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace }
+.stat { text-align: center; padding: 12px; border: 1px solid rgba(255,255,255,.08); border-radius: 12px; background: rgba(255,255,255,.03) }
+.stat-value { font-weight: 800; font-size: .9rem; word-break: break-all }
+.stat-label { opacity: .7 }
+
+.btn-slip.active { box-shadow: inset 0 0 0 999px rgba(99,179,237,.15); border-color: #63b3ed; }
+
+.progress { height: 10px; background: rgba(255,255,255,.08); border-radius: 10px; overflow: hidden }
+.progress-bar { background: linear-gradient(90deg, #5bc0ff, #ff8cc9); }
+
+.list-group-item { background: rgba(255,255,255,.02); color: var(--fg); border-color: rgba(255,255,255,.08) }
+.list-group-item:hover { background: rgba(255,255,255,.05) }
+
+footer { opacity: .7 }
+
+/* Light mode */
+:root.light {
+  --bg: #f6f8ff;
+  --fg: #0b1020;
+  --glass: rgba(255,255,255,0.85);
+}
